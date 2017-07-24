@@ -7,18 +7,6 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: age_tiered {
-    type: tier
-    tiers: [15, 25, 45, 50, 70]
-    style: integer
-    sql:  ${age};;
-  }
-
-  dimension: age_over_30 {
-    type: yesno
-    sql: ${age} > 30 ;;
-  }
-
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
@@ -78,6 +66,12 @@ view: users {
     sql: ${TABLE}.longitude ;;
   }
 
+  dimension: location_of_user {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
@@ -97,4 +91,6 @@ view: users {
     type: count
     drill_fields: [id, first_name, last_name]
   }
+
+
 }
