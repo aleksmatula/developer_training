@@ -7,6 +7,18 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: age_tiered {
+    type: tier
+    tiers: [15, 25, 45, 50, 70]
+    style: integer
+    sql:  ${age};;
+  }
+
+  dimension: age_over_30 {
+    type: yesno
+    sql: ${age} > 30 ;;
+  }
+
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
