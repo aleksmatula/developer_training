@@ -7,7 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 explore: users {
-  description: "All about users"
+  hidden: yes
 }
 #
 # explore: order_items {
