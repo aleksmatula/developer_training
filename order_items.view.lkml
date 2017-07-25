@@ -65,6 +65,7 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
+
   dimension_group: shipped {
     type: time
     timeframes: [
@@ -93,6 +94,18 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: total_revenue {
+    type: sum
+    sql: ${sale_price} ;;
+    value_format_name: usd
+  }
+
+  measure: average_price {
+    type: average
+    sql: ${sale_price} ;;
+    value_format_name: usd
   }
 
   # ----- Sets of fields for drilling ------
