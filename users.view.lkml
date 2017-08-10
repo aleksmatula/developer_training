@@ -4,25 +4,12 @@ view: users {
   dimension: id {
     primary_key: yes
     type: number
-    hidden: yes
     sql: ${TABLE}.id ;;
   }
 
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
-  }
-
-  dimension: age_tier {
-    type: tier
-    sql: ${age} ;;
-    tiers: [10, 20, 30, 40]
-    style: integer
-  }
-
-  dimension: is_age_over_30 {
-    type: yesno
-    sql: ${age} > 30 ;;
   }
 
   dimension: city {
@@ -79,12 +66,6 @@ view: users {
     sql: ${TABLE}.longitude ;;
   }
 
-  dimension: location_of_user {
-    type: location
-    sql_latitude: ${latitude} ;;
-    sql_longitude: ${longitude} ;;
-  }
-
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
@@ -104,6 +85,5 @@ view: users {
     type: count
     drill_fields: [id, first_name, last_name]
   }
-
 
 }
