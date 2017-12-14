@@ -5,24 +5,11 @@ view: users {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
-    hidden: yes
   }
 
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
-  }
-
-  dimension: age_tiered {
-    type: tier
-    sql: ${age} ;;
-    tiers: [20, 35, 55, 70, 90]
-    style: integer
-  }
-
-  dimension: is_over_30 {
-    type: yesno
-    sql: ${age} > 30 ;;
   }
 
   dimension: city {
@@ -78,12 +65,6 @@ view: users {
   dimension: longitude {
     type: number
     sql: ${TABLE}.longitude ;;
-  }
-
-  dimension: location {
-    type: location
-    sql_latitude: ${latitude}  ;;
-    sql_longitude: ${longitude} ;;
   }
 
   dimension: state {
