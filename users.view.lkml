@@ -4,11 +4,24 @@ view: users {
   dimension: id {
     type: number
     sql: ${TABLE}.id ;;
+    primary_key: yes
   }
 
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
+  }
+
+  dimension: age_tiered {
+    type: tier
+    sql: ${age} ;;
+    tiers: [20, 40, 65, 88]
+    style: integer
+  }
+
+  dimension: is_over_30 {
+    type: yesno
+    sql: ${age} > 30 ;;
   }
 
   dimension: city {
