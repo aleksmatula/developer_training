@@ -12,6 +12,22 @@ view: products {
     sql: ${TABLE}.brand ;;
   }
 
+  dimension: brand_manager_email {
+    type: string
+    sql: CASE
+              WHEN ${brand} = 'Columbia' THEN 'columnbia@somemail.com'
+              WHEN ${brand} = 'Allegra K' THEN 'allegrak@somemail.com'
+              WHEN ${brand} = 'Dockers' THEN 'dockers@somemail.com'
+              WHEN ${brand} = 'Ray-Ban' THEN 'rayban@somemail.com'
+              ELSE NULL END ;;
+
+  }
+
+  dimension: is_active_brand {
+    type: yesno
+    sql: ${brand_manager_email} IS NOT NULL  ;;
+  }
+
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
