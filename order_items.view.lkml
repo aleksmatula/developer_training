@@ -1,3 +1,5 @@
+explore: order_items {}
+
 view: order_items {
   sql_table_name: public.order_items ;;
 
@@ -44,6 +46,8 @@ view: order_items {
   dimension: order_id {
     type: number
     sql: ${TABLE}.order_id ;;
+    html:
+    <span title=“{{ inventory_item_id._value }}“> {{linked_value}} </span> ;;
   }
 
   dimension_group: returned {
@@ -100,6 +104,17 @@ view: order_items {
     type: sum
     sql: ${sale_price} ;;
     value_format_name: usd
+  }
+
+  measure: dynamic_measure {
+    type: number
+    sql: {% if status._in_query %}
+    ${count}
+  {% elsif user_id._in_query %}
+    ${total_revenue}
+  {% else %}
+    ${count}
+  {% endif %} ;;
   }
 
   measure: average_price {
