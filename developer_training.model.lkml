@@ -17,6 +17,9 @@ explore: users {
 }
 
 
+
+
+
 # explore: order_items {
 # #   sql_always_where: ${users.city} IN ('{{ _user_attributes['city_1'] }}', '{{ _user_attributes['city_2'] }}') ;;
 #   persist_with: daily_caching_mechanism
