@@ -9,7 +9,7 @@ view: users {
   }
 
   dimension: age {
-  required_access_grants: [access_to_user_data]
+  required_access_grants: [access]
     group_label: "Age info"
     type: number
     sql: ${TABLE}.age ;;

@@ -7,14 +7,17 @@ datagroup: daily_caching_mechanism {
   max_cache_age: "6 hours"
 }
 
-explore: users {
-}
-
-
-access_grant: access_to_user_data {
-  allowed_values: ["finance", "all"]
+access_grant: access {
+  allowed_values: ["admin"]
   user_attribute: department
 }
+
+explore: users {
+  required_access_grants: [access]
+}
+
+
+
 
 
 
@@ -34,6 +37,7 @@ explore: order_items {
   }
 
   join: products {
+    required_access_grants: [access]
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
