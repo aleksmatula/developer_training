@@ -9,6 +9,7 @@ view: users {
   }
 
   dimension: age {
+  required_access_grants: [access_to_user_data]
     group_label: "Age info"
     type: number
     sql: ${TABLE}.age ;;
@@ -51,16 +52,6 @@ view: users {
       year
     ]
     sql: ${TABLE}.created_at ;;
-  }
-
-  dimension: is_first_day_of_month {
-    type: yesno
-    sql: ${created_date} = ${last_fist_day_of_month.min_month_date} ;;
-  }
-
-  dimension: is_last_day_of_month {
-    type: yesno
-    sql: ${created_date} = ${last_fist_day_of_month.max_month_date} ;;
   }
 
   dimension: email {

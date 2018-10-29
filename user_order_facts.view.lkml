@@ -1,7 +1,5 @@
 view: user_order_facts {
   derived_table: {
-    datagroup_trigger: daily_caching_mechanism
-    distribution_style: even
     sql: SELECT user_id
       ,SUM(sale_price) as total_revenue
       ,COUNT(order_id) as total_orders

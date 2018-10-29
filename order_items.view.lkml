@@ -1,5 +1,3 @@
-explore: order_items {}
-
 view: order_items {
   sql_table_name: public.order_items ;;
 
