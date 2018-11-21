@@ -104,17 +104,6 @@ view: order_items {
     value_format_name: usd
   }
 
-  measure: dynamic_measure {
-    type: number
-    sql: {% if status._in_query %}
-    ${count}
-  {% elsif user_id._in_query %}
-    ${total_revenue}
-  {% else %}
-    ${count}
-  {% endif %} ;;
-  }
-
   measure: average_price {
     type: average
     sql: ${sale_price} ;;
