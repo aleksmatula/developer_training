@@ -1,6 +1,18 @@
 view: order_items {
   sql_table_name: public.order_items ;;
 
+  parameter: dynamic_measure_selector {
+    type: string
+    allowed_value: {
+      label: "Total Spend"
+      value: "t"
+    }
+    allowed_value: {
+      label: "Average Price"
+      value: "a"
+    }
+  }
+
   dimension: id {
     primary_key: yes
     type: number
@@ -108,6 +120,12 @@ view: order_items {
     type: average
     sql: ${sale_price} ;;
     value_format_name: usd
+  }
+
+  measure: dynamic_measure {
+    type: number
+    sql: CASE WHEN {% parameter dynamic_measure_selector %} = 't' THEN ${total_revenue} ELSE ${average_price} END ;;
+    label_from_parameter: dynamic_measure_selector
   }
 
   # ----- Sets of fields for drilling ------

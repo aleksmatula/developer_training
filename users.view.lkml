@@ -9,11 +9,14 @@ view: users {
   }
 
   dimension: age {
+    label: "Age of user"
+    group_label: "Age info"
     type: number
     sql: ${TABLE}.age ;;
   }
 
   dimension: age_tiered {
+    group_label: "Age info"
     type: tier
     tiers: [20, 50, 80, 100]
     sql: ${age} ;;
@@ -21,6 +24,7 @@ view: users {
   }
 
   dimension: is_over_30 {
+    group_label: "Age info"
     type: yesno
     sql: ${age} > 30 ;;
   }
@@ -80,6 +84,12 @@ view: users {
     sql: ${TABLE}.longitude ;;
   }
 
+  dimension: user_location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
@@ -95,7 +105,17 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  measure: average_age {
+    type: average
+    sql: ${age} ;;
+  }
+
   measure: count {
     type: count
+  }
+
+  measure: count_running_total {
+    type: running_total
+    sql: ${count} ;;
   }
 }
