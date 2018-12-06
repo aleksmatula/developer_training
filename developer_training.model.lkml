@@ -16,15 +16,9 @@ datagroup: orders_check {
 
 
 explore: users {
-  persist_with: daily_caching_mechanism
-  access_filter: {
-    field: country
-    user_attribute: country
-  }
 }
 
 explore: order_items {
-  persist_with: orders_check
   join: users {
     type: left_outer
     sql_on: ${users.id} = ${order_items.user_id} ;;
@@ -38,16 +32,8 @@ explore: order_items {
   }
 
   join: products {
-    view_label: "Our Products"
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
-    relationship: many_to_one
-  }
-
-  join: user_order_facts {
-    view_label: "Users"
-    type: left_outer
-    sql_on: ${user_order_facts.user_id} = ${order_items.user_id} ;;
     relationship: many_to_one
   }
 }
