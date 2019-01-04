@@ -9,17 +9,20 @@ view: users {
 
 
   dimension: age {
+    label: "age"
     type: number
     sql: ${TABLE}.age ;;
   }
 
   dimension: city {
+    label: "city"
     type: string
     sql: ${TABLE}.city ;;
   }
 
 
   dimension: country {
+    label: "country"
     type: string
     sql: ${TABLE}.country ;;
   }
@@ -51,6 +54,10 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+    link: {
+      label: "Dashboard 2"
+      url: "https://localhost:9999/dashboards/8?Country={{ _filters['users.country'] | url_encode }}&Gender={{ value | url_encode }}"
+    }
   }
 
   dimension: last_name {

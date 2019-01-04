@@ -95,17 +95,20 @@ view: order_items {
   }
 
   measure: count {
+    label: "count"
     type: count
     drill_fields: [detail*]
   }
 
   measure: total_revenue {
+    label: "total_revenue"
     type: sum
     sql: ${sale_price} ;;
     value_format_name: usd
   }
 
   measure: average_price {
+    label: "average_price"
     type: average
     sql: ${sale_price} ;;
     value_format_name: usd
