@@ -45,8 +45,6 @@ view: order_items {
   dimension: order_id {
     type: number
     sql: ${TABLE}.order_id ;;
-    html:
-    <span title=“{{ inventory_item_id._value }}“> {{linked_value}} </span> ;;
   }
 
   dimension_group: returned {
@@ -98,20 +96,6 @@ view: order_items {
     label: "count"
     type: count
     drill_fields: [detail*]
-  }
-
-  measure: total_revenue {
-    label: "total_revenue"
-    type: sum
-    sql: ${sale_price} ;;
-    value_format_name: usd
-  }
-
-  measure: average_price {
-    label: "average_price"
-    type: average
-    sql: ${sale_price} ;;
-    value_format_name: usd
   }
 
   # ----- Sets of fields for drilling ------
