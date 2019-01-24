@@ -5,25 +5,11 @@ view: users {
     type: number
     sql: ${TABLE}.id ;;
     primary_key: yes
-    hidden: yes
   }
-
 
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
-  }
-
-  dimension: age_tiered {
-    style: integer
-    type: tier
-    sql: ${age} ;;
-    tiers: [25, 50, 75]
-  }
-
-  dimension: is_over_30 {
-    type: yesno
-    sql: ${age} > 30 ;;
   }
 
   dimension: city {
@@ -97,6 +83,5 @@ view: users {
 
   measure: count {
     type: count
-
   }
 }
