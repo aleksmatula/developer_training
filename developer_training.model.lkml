@@ -4,10 +4,6 @@ connection: "redshift"
 include: "*.view"
 
 explore: users {
-  access_filter: {
-    field: country
-    user_attribute: country
-  }
 }
 
 
