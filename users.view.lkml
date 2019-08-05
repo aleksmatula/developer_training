@@ -64,7 +64,7 @@ view: users {
     sql: ${TABLE}.gender ;;
     link: {
       label: "Link to Gender Dashboard"
-      url: "https://localhost:9999/dashboards/8?Country=&Gender={{ value }}"
+      url: "/dashboards/8?Country=&Gender={{ value }}"
     }
   }
 
