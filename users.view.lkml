@@ -62,6 +62,10 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+    link: {
+      label: "Link to Gender Dashboard"
+      url: "https://localhost:9999/dashboards/8?Country=&Gender={{ value }}"
+    }
   }
 
   dimension: last_name {
