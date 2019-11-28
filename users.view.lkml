@@ -13,18 +13,6 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
-  dimension: age_tiered {
-    type: tier
-    sql: ${age} ;;
-    tiers: [10, 20, 40, 60, 80]
-    style: integer
-  }
-
-  dimension: is_over_30 {
-    type: yesno
-    sql: ${age} > 30 ;;
-  }
-
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
@@ -57,15 +45,6 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
-  }
-
-  dimension: gender {
-    type: string
-    sql: ${TABLE}.gender ;;
-    link: {
-      label: "Link to Gender Dashboard"
-      url: "/dashboards/8?Country=&Gender={{ value }}"
-    }
   }
 
   dimension: last_name {
