@@ -2,6 +2,7 @@ view: order_items {
   sql_table_name: public.order_items ;;
 
   dimension: id {
+    label: "Order Item Id"
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;

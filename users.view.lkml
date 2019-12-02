@@ -90,6 +90,22 @@ view: users {
   }
 
   measure: count {
+    label: "Count of Users"
+    group_label: "Simple Counts"
     type: count
+    drill_fields: [first_name, last_name, user_order_facts.user_lifetime_revenue, user_order_facts.user_lifetime_items, order_items.count]
+  }
+
+  measure: average_age {
+    type: average
+    sql: ${age} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: count_of_users_running_total {
+    group_label: "Simple Counts"
+    description: "This measure simply does running total of our users based on any aggregation applied in the explore"
+    type: running_total
+    sql: ${count} ;;
   }
 }
