@@ -24,6 +24,11 @@ explore: users {
 
 
 explore: order_items {
+  access_filter: {
+    field: products.brand
+    user_attribute: brand
+  }
+
   group_label: "E-commerce tuff"
   join: users {
   view_label: "Ordering Users"
