@@ -13,18 +13,6 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
-  dimension: age_tiered {
-    type: tier
-    tiers: [20, 35, 60, 80]
-    sql: ${age} ;;
-    style: integer
-  }
-
-  dimension: is_over_30 {
-    type: yesno
-    sql: ${age} > 30 ;;
-  }
-
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
@@ -90,22 +78,6 @@ view: users {
   }
 
   measure: count {
-    label: "Count of Users"
-    group_label: "Simple Counts"
     type: count
-    drill_fields: [first_name, last_name, user_order_facts.user_lifetime_revenue, user_order_facts.user_lifetime_items, order_items.count]
-  }
-
-  measure: average_age {
-    type: average
-    sql: ${age} ;;
-    value_format_name: decimal_2
-  }
-
-  measure: count_of_users_running_total {
-    group_label: "Simple Counts"
-    description: "This measure simply does running total of our users based on any aggregation applied in the explore"
-    type: running_total
-    sql: ${count} ;;
   }
 }
